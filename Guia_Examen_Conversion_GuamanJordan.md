@@ -657,7 +657,7 @@ Sigue estos pasos EXACTOS en orden para obtener todos los puntos del examen.
 
 ---
 
-### 📸 EVIDENCIA 3: Pull Request con CI (2 puntos)
+### EVIDENCIA 3: Pull Request con CI (2 puntos)
 
 **Objetivo:** Demostrar que el CI se ejecuta en Pull Requests y Firebase genera preview.
 
@@ -671,8 +671,8 @@ Sigue estos pasos EXACTOS en orden para obtener todos los puntos del examen.
 
 2. Abre el archivo `public/index.html`.
 3. Busca la etiqueta `<h1>` (línea ~22) y cámbiala:
-   * De: `<h1>🌡️ Conversiones & Promedios Móviles</h1>`
-   * A: `<h1>🌡️ Conversiones & Promedios Móviles - ACTUALIZADO</h1>`
+   * De: `<h1>Conversiones & Promedios Móviles</h1>`
+   * A: `<h1>Conversiones & Promedios Móviles - ACTUALIZADO</h1>`
 4. Guarda el archivo.
 5. Sube los cambios a la nueva rama:
 
@@ -693,9 +693,9 @@ Sigue estos pasos EXACTOS en orden para obtener todos los puntos del examen.
 
 1. En la pantalla del Pull Request, espera unos segundos (o minutos).
 2. Se ejecutarán varias "checks" abajo.
-3. Espera hasta que todas estén en **Verde** ✅.
+3. Espera hasta que todas estén en **Verde**.
 4. Busca un comentario automático del bot `github-actions` (o Firebase Bot) que dice **"Deploy preview ready!"** o similar y muestra un link azul al preview.
-5. **📸 TOMA LA CAPTURA 3:** Debe verse:
+5. **TOMA LA CAPTURA 3:** Debe verse:
    - El título del Pull Request
    - El check verde "All checks have passed" o similar
    - El comentario automático con el link de "Deploy preview"
@@ -703,7 +703,7 @@ Sigue estos pasos EXACTOS en orden para obtener todos los puntos del examen.
 
 ---
 
-### 📸 EVIDENCIA 4: Deploy Live en Producción (2 puntos)
+### EVIDENCIA 4: Deploy Live en Producción (2 puntos)
 
 **Objetivo:** Demostrar que el merge a main despliega automáticamente a producción.
 
@@ -720,17 +720,17 @@ Sigue estos pasos EXACTOS en orden para obtener todos los puntos del examen.
 2. Verás que se ejecuta un nuevo workflow llamado algo como:
    - `Deploy to Firebase Hosting on merge`
    - `CI Workflow` (ejecutándose en la rama main)
-3. Espera a que termine y se ponga en **Verde** ✅.
+3. Espera a que termine y se ponga en **Verde**.
 
 **3. Ver la página y Capturar:**
 
 1. Abre una nueva pestaña en tu navegador.
 2. Escribe la URL de tu proyecto Firebase (ej: `https://guamanjordan-conversion.web.app` o la que te haya dado Firebase).
-3. Verifica que el título `<h1>` diga "🌡️ Conversiones & Promedios Móviles - ACTUALIZADO".
+3. Verifica que el título `<h1>` diga "Conversiones & Promedios Móviles - ACTUALIZADO".
 4. Prueba los convertidores interactivos:
    - Ingresa 32 en Fahrenheit y verifica que convierte a 0°C
    - Ingresa 100 en Celsius y verifica que convierte a 212°F
-5. **📸 TOMA LA CAPTURA 4:** Captura toda la pantalla del navegador mostrando:
+5. **TOMA LA CAPTURA 4:** Captura toda la pantalla del navegador mostrando:
    - La URL correcta en la barra de direcciones (tu dominio de Firebase)
    - La página web completamente cargada
    - El título actualizado visible
