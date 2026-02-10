@@ -9,7 +9,7 @@ function toFahrenheit(c) {
   if (typeof c !== 'number' || !Number.isFinite(c)) {
     throw new TypeError('El valor debe ser un número finito');
   }
-  return Number(((c * / 5) + 32).toFixed(1));
+  return Number(((c * 9 / 5) + 32).toFixed(1));
 }
 
 function movingAverages(series, window) {
