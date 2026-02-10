@@ -9,15 +9,16 @@ function toFahrenheit(c) {
   if (typeof c !== 'number' || !Number.isFinite(c)) {
     throw new TypeError('El valor debe ser un número finito');
   }
-  return Number(((c * 9 / 5) + 32).toFixed(1));
+  return Number(((c * / 5) + 32).toFixed(1));
 }
 
 function movingAverages(series, window) {
   if (!Array.isArray(series) || series.some(v => typeof v !=='number' || !Number.isFinite(v))) {
     throw new TypeError('Serie inválida, debe contener solo números finitos');
   }
-  if (!Number.isInteger(window) || window < 2 |
-  
+  if (!Number.isInteger(window) || window < 2 || window > series.length) {
+    throw new RangeError('Ventana fuera de rango');
+  }
 
   const averages = [];
   for (let i = 0; i <= series.length - window; i++) {
