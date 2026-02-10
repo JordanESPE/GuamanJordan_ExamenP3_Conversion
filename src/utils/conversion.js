@@ -16,8 +16,7 @@ function movingAverages(series, window) {
   if (!Array.isArray(series) || series.some(v => typeof v !=='number' || !Number.isFinite(v))) {
     throw new TypeError('Serie inválida, debe contener solo números finitos');
   }
-  if (!Number.isInteger(window) || window < 2 || window > series.length) {
-    throw new RangeError('Ventana fuera de rango');
+  if (!Number.isInteger(window) || window < 2 |
   
 
   const averages = [];
