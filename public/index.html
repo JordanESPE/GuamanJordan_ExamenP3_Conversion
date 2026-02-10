@@ -1,224 +1,89 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversiones & Promedios Móviles — Jordan Guaman</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background: #f0f0f0; color: #333; padding: 20px; }
-        .container { max-width: 900px; margin: 0 auto; background: white; padding: 20px; border: 1px solid #ccc; }
-        h1 { color: #333; border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 20px; }
-        h2 { color: #555; margin-top: 20px; margin-bottom: 10px; }
-        .info-section { background: #f5f5f5; border-left: 4px solid #666; padding: 15px; margin-bottom: 20px; }
-        .info-section h2 { margin-top: 0; color: #333; }
-        .info-section p { margin: 8px 0; line-height: 1.5; }
-        .converter { background: #fafafa; padding: 20px; margin-bottom: 20px; border: 1px solid #ddd; }
-        .converter h3 { color: #333; margin-bottom: 10px; }
-        .input-group { margin: 10px 0; }
-        .input-group label { display: block; margin-bottom: 5px; font-weight: bold; }
-        .input-group input { width: 100%; padding: 8px; border: 1px solid #ccc; font-size: 1rem; }
-        .input-group input:focus { outline: none; border-color: #666; }
-        button { background: #4a4a4a; color: white; padding: 10px 20px; border: none; cursor: pointer; font-size: 1rem; }
-        button:hover { background: #333; }
-        .result { margin-top: 15px; padding: 10px; background: #e8f5e9; border-left: 4px solid #4caf50; color: #2e7d32; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
-        th { background: #4a4a4a; color: white; }
-        tr:nth-child(even) { background-color: #f9f9f9; }
-        .feature-list { list-style: none; padding: 0; }
-        .feature-list li { padding: 8px 0; padding-left: 25px; position: relative; }
-        .feature-list li:before { content: "✓"; position: absolute; left: 0; color: #4caf50; font-weight: bold; }
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/12.9.0/firebase-app-compat.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/12.9.0/firebase-auth-compat.js"></script>
+    <script defer src="/__/firebase/12.9.0/firebase-database-compat.js"></script>
+    <script defer src="/__/firebase/12.9.0/firebase-firestore-compat.js"></script>
+    <script defer src="/__/firebase/12.9.0/firebase-functions-compat.js"></script>
+    <script defer src="/__/firebase/12.9.0/firebase-messaging-compat.js"></script>
+    <script defer src="/__/firebase/12.9.0/firebase-storage-compat.js"></script>
+    <script defer src="/__/firebase/12.9.0/firebase-analytics-compat.js"></script>
+    <script defer src="/__/firebase/12.9.0/firebase-remote-config-compat.js"></script>
+    <script defer src="/__/firebase/12.9.0/firebase-performance-compat.js"></script>
+    <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+    <style media="screen">
+      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
+      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
+      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
+      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
+      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
+      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
+      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
+      @media (max-width: 600px) {
+        body, #message { margin-top: 0; background: white; box-shadow: none; }
+        body { border-top: 16px solid #ffa100; }
+      }
     </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Conversiones & Promedios Móviles</h1>
-        
-        <div class="info-section">
-            <h2>Datos del Estudiante</h2>
-            <p><strong>Nombre:</strong> Jordan Guaman</p>
-            <p><strong>NRC:</strong> 27854</p>
-            <p><strong>Correo:</strong> jaguaman16@espe.edu.ec</p>
-            <p><strong>Presentación:</strong> Estudiante de Ingeniería de Software especializado en CI/CD. Este proyecto demuestra la implementación de funciones de conversión de temperaturas y cálculo de promedios móviles con pruebas automatizadas, integración continua con GitHub Actions y despliegue automatizado en Firebase Hosting.</p>
-        </div>
-
-        <h2>Funcionalidades del Proyecto</h2>
-        <ul class="feature-list">
-            <li><strong>Conversión Fahrenheit a Celsius:</strong> Convierte temperaturas de °F a °C usando la fórmula C = (F - 32) × 5/9</li>
-            <li><strong>Conversión Celsius a Fahrenheit:</strong> Convierte temperaturas de °C a °F usando la fórmula F = C × 9/5 + 32</li>
-            <li><strong>Promedios Móviles:</strong> Calcula promedios móviles de series numéricas con ventana deslizante</li>
-            <li><strong>Validaciones Completas:</strong> Incluye manejo robusto de errores (TypeError y RangeError)</li>
-            <li><strong>Cobertura de Pruebas:</strong> >85% de cobertura en líneas y ramas</li>
-        </ul>
-
-        <div class="converter">
-            <h3>Conversor de Temperatura (Demo Interactiva)</h3>
-            <div class="input-group">
-                <label for="fahrenheit">Fahrenheit (°F):</label>
-                <input type="number" id="fahrenheit" placeholder="Ej: 32" step="0.1">
-            </div>
-            <button onclick="convertToC()">Convertir a Celsius</button>
-            <div id="resultC" class="result" style="display: none;"></div>
-
-            <div class="input-group">
-                <label for="celsius">Celsius (°C):</label>
-                <input type="number" id="celsius" placeholder="Ej: 0" step="0.1">
-            </div>
-            <button onclick="convertToF()">Convertir a Fahrenheit</button>
-            <div id="resultF" class="result" style="display: none;"></div>
-        </div>
-
-        <h2>Ejemplos de Conversión</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Fahrenheit (°F)</th>
-                    <th>Celsius (°C)</th>
-                    <th>Contexto</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>32.0</td>
-                    <td>0.0</td>
-                    <td>Punto de congelación del agua</td>
-                </tr>
-                <tr>
-                    <td>212.0</td>
-                    <td>100.0</td>
-                    <td>Punto de ebullición del agua</td>
-                </tr>
-                <tr>
-                    <td>98.6</td>
-                    <td>37.0</td>
-                    <td>Temperatura corporal normal</td>
-                </tr>
-                <tr>
-                    <td>-40.0</td>
-                    <td>-40.0</td>
-                    <td>Punto de convergencia F=C</td>
-                </tr>
-                <tr>
-                    <td>68.0</td>
-                    <td>20.0</td>
-                    <td>Temperatura ambiente típica</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2> Ejemplo de Promedios Móviles</h2>
-        <div class="converter">
-            <p><strong>Serie de entrada:</strong> [10, 20, 30, 40]</p>
-            <p><strong>Ventana:</strong> 2</p>
-            <p><strong>Resultado:</strong> [15.00, 25.00, 35.00]</p>
-            <br>
-            <p>
-                <strong>Cálculo:</strong><br>
-                • Promedio(10, 20) = 15.00<br>
-                • Promedio(20, 30) = 25.00<br>
-                • Promedio(30, 40) = 35.00
-            </p>
-        </div>
-
-        <h2>Stack Tecnológico</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Categoría</th>
-                    <th>Tecnología</th>
-                    <th>Propósito</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Runtime</td>
-                    <td>Node.js 18</td>
-                    <td>Entorno de ejecución JavaScript</td>
-                </tr>
-                <tr>
-                    <td>Testing</td>
-                    <td>Jest</td>
-                    <td>Framework de pruebas unitarias</td>
-                </tr>
-                <tr>
-                    <td>Linter</td>
-                    <td>ESLint</td>
-                    <td>Análisis estático de código</td>
-                </tr>
-                <tr>
-                    <td>CI/CD</td>
-                    <td>GitHub Actions</td>
-                    <td>Integración y despliegue continuo</td>
-                </tr>
-                <tr>
-                    <td>Hosting</td>
-                    <td>Firebase Hosting</td>
-                    <td>Despliegue de aplicación web</td>
-                </tr>
-            </tbody>
-        </table>
+  </head>
+  <body>
+    <div id="message">
+      <h2>Welcome</h2>
+      <h1>Firebase Hosting Setup Complete</h1>
+      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
+      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
     </div>
+    <p id="load">Firebase SDK Loading&hellip;</p>
 
     <script>
-        function toCelsius(f) {
-            return Number(((f - 32) * 5 / 9).toFixed(1));
-        }
+      document.addEventListener('DOMContentLoaded', function() {
+        const loadEl = document.querySelector('#load');
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+        // // The Firebase SDK is initialized and available here!
+        //
+        // firebase.auth().onAuthStateChanged(user => { });
+        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+        // firebase.firestore().doc('/foo/bar').get().then(() => { });
+        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+        // firebase.messaging().requestPermission().then(() => { });
+        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+        // firebase.analytics(); // call to activate
+        // firebase.analytics().logEvent('tutorial_completed');
+        // firebase.performance(); // call to activate
+        //
+        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
-        function toFahrenheit(c) {
-            return Number(((c * 9 / 5) + 32).toFixed(1));
+        try {
+          let app = firebase.app();
+          let features = [
+            'auth', 
+            'database', 
+            'firestore',
+            'functions',
+            'messaging', 
+            'storage', 
+            'analytics', 
+            'remoteConfig',
+            'performance',
+          ].filter(feature => typeof app[feature] === 'function');
+          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+        } catch (e) {
+          console.error(e);
+          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
         }
-
-        function convertToC() {
-            const f = parseFloat(document.getElementById('fahrenheit').value);
-            const resultDiv = document.getElementById('resultC');
-            
-            if (isNaN(f) || !isFinite(f)) {
-                resultDiv.style.display = 'block';
-                resultDiv.style.background = '#ffcccc';
-                resultDiv.style.borderLeftColor = '#cc0000';
-                resultDiv.style.color = '#cc0000';
-                resultDiv.textContent = 'Error: Ingresa un número válido';
-                return;
-            }
-            
-            const c = toCelsius(f);
-            resultDiv.style.display = 'block';
-            resultDiv.style.background = '#e8f5e9';
-            resultDiv.style.borderLeftColor = '#4caf50';
-            resultDiv.style.color = '#2e7d32';
-            resultDiv.textContent = `Resultado: ${f}°F = ${c}°C`;
-        }
-
-        function convertToF() {
-            const c = parseFloat(document.getElementById('celsius').value);
-            const resultDiv = document.getElementById('resultF');
-            
-            if (isNaN(c) || !isFinite(c)) {
-                resultDiv.style.display = 'block';
-                resultDiv.style.background = '#ffcccc';
-                resultDiv.style.borderLeftColor = '#cc0000';
-                resultDiv.style.color = '#cc0000';
-                resultDiv.textContent = 'Error: Ingresa un número válido';
-                return;
-            }
-            
-            const f = toFahrenheit(c);
-            resultDiv.style.display = 'block';
-            resultDiv.style.background = '#e8f5e9';
-            resultDiv.style.borderLeftColor = '#4caf50';
-            resultDiv.style.color = '#2e7d32';
-            resultDiv.textContent = `Resultado: ${c}°C = ${f}°F`;
-        }
-
-        // Permitir conversión con Enter
-        document.getElementById('fahrenheit').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') convertToC();
-        });
-        
-        document.getElementById('celsius').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') convertToF();
-        });
+      });
     </script>
-</body>
+  </body>
 </html>

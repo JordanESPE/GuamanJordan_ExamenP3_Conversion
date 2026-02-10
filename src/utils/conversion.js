@@ -18,7 +18,7 @@ function movingAverages(series, window) {
   }
   if (!Number.isInteger(window) || window < 2 || window > series.length) {
     throw new RangeError('Ventana fuera de rango');
-  }
+  
 
   const averages = [];
   for (let i = 0; i <= series.length - window; i++) {
